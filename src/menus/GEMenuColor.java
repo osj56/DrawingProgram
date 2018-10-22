@@ -11,7 +11,7 @@ import javax.swing.JMenuItem;
 import constants.GEConstants;
 import constants.GEConstants.EColorMenuItems;
 import frames.GEDrawingPanel;
-
+import java.util.*;
 @SuppressWarnings("serial")
 public class GEMenuColor extends JMenu {
 
@@ -21,13 +21,13 @@ public class GEMenuColor extends JMenu {
 		super(label);
 
 		for (EColorMenuItems btn : EColorMenuItems.values()) {
-			JMenuItem menuItem = new JMenuItem(btn.toString());		
+			JMenuItem menuItem = new JMenuItem(btn.toString());
 			menuItem.setActionCommand(btn.toString());
 			menuItem.addActionListener(new ColorMenuHandler());
 			add(menuItem);
 		}
 	}
-	
+
 	public void init(GEDrawingPanel drawingPanel) {
 		this.drawingPanel = drawingPanel;
 	}
@@ -39,22 +39,22 @@ public class GEMenuColor extends JMenu {
 			case SetLineColor:
 				setLineColor();
 				break;
-				
+
 			case SetFillColor:
 				setFillColor();
 				break;
-				
+
 			case ClearLineColor:
 				clearLineColor();
 				break;
-				
+
 			case ClearFillColor:
 				clearFillColor();
 				break;
 			}
 		}
 	}
-	
+
 	private void setLineColor() {
 		Color lineColor = JColorChooser.showDialog(null, GEConstants.LINE_COLOR_TITLE, null);
 		drawingPanel.setLineColor(lineColor);
